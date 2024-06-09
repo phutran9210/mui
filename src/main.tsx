@@ -1,0 +1,21 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import './index.css';
+import { CssBaseline } from '@mui/material';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Info from './Info.tsx';
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <React.Fragment>
+                <CssBaseline />
+                <Routes>
+                    <Route path="/" element={<App />} />
+                    <Route path="/info" element={<Info />} />
+                </Routes>
+            </React.Fragment>
+        </BrowserRouter>
+    </React.StrictMode>
+);
