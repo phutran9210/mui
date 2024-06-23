@@ -5,6 +5,7 @@ import './index.css';
 import { CssBaseline } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Info from './Info.tsx';
+import { TestModal } from './modal';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <Routes>
                     <Route path="/" element={<App />} />
                     <Route path="/info" element={<Info />} />
+                    <Route path="/modal" element={<TestModal />} />
                 </Routes>
             </React.Fragment>
         </BrowserRouter>
