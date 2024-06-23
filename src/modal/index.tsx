@@ -7,12 +7,19 @@ import { useForm, FieldError, FieldErrorsImpl, Merge } from 'react-hook-form';
 export const TestModal = () => {
     const [dialogOpen, setDialogOpen] = useState(false);
     const [customer, setCustomer] = useState<CustomerInfoDialogProps['customer']>(null);
-    const { register, handleSubmit, formState: { errors }, setValue, trigger, clearErrors } = useForm();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        setValue,
+        trigger,
+        clearErrors
+    } = useForm();
 
     useEffect(() => {
         fetch('http://dummyjson.com/users/1')
-            .then(res => res.json())
-            .then(data => setCustomer(data));
+            .then((res) => res.json())
+            .then((data) => setCustomer(data));
     }, []);
 
     const handleOpenDialog = () => {
@@ -55,7 +62,6 @@ export const TestModal = () => {
         if (!/^\d$/.test(e.key)) {
             e.preventDefault();
         }
-
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -66,6 +72,13 @@ export const TestModal = () => {
             clearErrors('number');
         } else {
             trigger('number');
+        }
+    };
+
+    const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+        const pasteData = e.clipboardData.getData('text');
+        if (!/^\d*$/.test(pasteData)) {
+            e.preventDefault();
         }
     };
 
@@ -88,6 +101,7 @@ export const TestModal = () => {
                         })}
                         onKeyDown={handleKeyDown}
                         onInput={handleInputChange}
+                        onPaste={handlePaste}
                         onBlur={() => trigger('number')}
                     />
                     {errors.number && <p>{getErrorMessage(errors.number)}</p>}
