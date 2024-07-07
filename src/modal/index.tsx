@@ -7,6 +7,7 @@ import { useForm, FieldError, FieldErrorsImpl, Merge } from 'react-hook-form';
 export const TestModal = () => {
     const [dialogOpen, setDialogOpen] = useState(false);
     const [customer, setCustomer] = useState<CustomerInfoDialogProps['customer']>(null);
+
     const {
         register,
         handleSubmit,

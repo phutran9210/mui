@@ -6,18 +6,32 @@ import { CssBaseline } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Info from './Info.tsx';
 import { TestModal } from './modal';
+import SnackbarComponent from './snackbar/SnackbarComponent.tsx';
+import Upload from './upload';
+import QRCodeGenerator from './qr-code';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { AppProvider } from './context';
+
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <BrowserRouter>
-            <React.Fragment>
-                <CssBaseline />
-                <Routes>
-                    <Route path="/" element={<App />} />
-                    <Route path="/info" element={<Info />} />
-                    <Route path="/modal" element={<TestModal />} />
-                </Routes>
-            </React.Fragment>
-        </BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+            <BrowserRouter>
+                <React.Fragment>
+                    <CssBaseline />
+                    <AppProvider>
+                        <Routes>
+                            <Route path="/" element={<App />} />
+                            <Route path="/info" element={<Info />} />
+                            <Route path="/modal" element={<TestModal />} />
+                            <Route path="/snackbar" element={<SnackbarComponent />} />
+                            <Route path="/upload" element={<Upload />} />
+                            <Route path="/qr" element={<QRCodeGenerator />} />
+                        </Routes>
+                    </AppProvider>
+                </React.Fragment>
+            </BrowserRouter>
+        </QueryClientProvider>
     </React.StrictMode>
 );
