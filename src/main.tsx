@@ -11,6 +11,8 @@ import Upload from './upload';
 import QRCodeGenerator from './qr-code';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { AppProvider } from './context';
+import DynamicForm from './dynamic-form';
+import SurveyComponent from './survey';
 
 const queryClient = new QueryClient();
 
@@ -28,6 +30,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                             <Route path="/snackbar" element={<SnackbarComponent />} />
                             <Route path="/upload" element={<Upload />} />
                             <Route path="/qr" element={<QRCodeGenerator />} />
+                            <Route path="/dynamic" element={<DynamicForm />} />
+                            <Route path="/survey" element={<SurveyComponent />} />
                         </Routes>
                     </AppProvider>
                 </React.Fragment>
