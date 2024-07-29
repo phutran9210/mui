@@ -13,6 +13,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { AppProvider } from './context';
 import DynamicForm from './dynamic-form';
 import SurveyComponent from './survey';
+import AppForm from './form';
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                             <Route path="/qr" element={<QRCodeGenerator />} />
                             <Route path="/dynamic" element={<DynamicForm />} />
                             <Route path="/survey" element={<SurveyComponent />} />
+                            <Route path="/form" element={<AppForm />} />
                         </Routes>
                     </AppProvider>
                 </React.Fragment>
