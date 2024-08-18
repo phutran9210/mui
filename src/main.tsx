@@ -14,6 +14,10 @@ import { AppProvider } from './context';
 import DynamicForm from './dynamic-form';
 import SurveyComponent from './survey';
 import AppForm from './form';
+import VideoPage from './player';
+import DemoColumn from './chart';
+import NestedDialog from './nestedDialog';
+import MyForm from './nestedDialog/MyForm.tsx';
 
 const queryClient = new QueryClient();
 
@@ -34,6 +38,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                             <Route path="/dynamic" element={<DynamicForm />} />
                             <Route path="/survey" element={<SurveyComponent />} />
                             <Route path="/form" element={<AppForm />} />
+                            <Route path="/video" element={<VideoPage />} />
+                            <Route path="/chart" element={<DemoColumn />} />
+                            <Route path="/dialog" element={<NestedDialog />} />
+                            <Route path="/my-form" element={<MyForm />} />
                         </Routes>
                     </AppProvider>
                 </React.Fragment>
